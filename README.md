@@ -6,6 +6,7 @@ The program who decode you voice and send query to openai ChatGPT, after this sh
 
 ## Requirements
 
+- Linux
 - [wihsper](https://github.com/openai/whisper)
 - [chatgpt-shell-cli](https://github.com/0xacx/chatGPT-shell-cli)
 - You OpenAI key
@@ -21,3 +22,4 @@ The program who decode you voice and send query to openai ChatGPT, after this sh
 ## Usage
 
 Start programm in shell "python ask_cli.py" and wait voice sounde from file "im_listen.txt" ask anything and wait result. Logs in voice_gpt_log.log.
+I bind 8'th button mouse via xbindkeys, and ask GPT very easy.
