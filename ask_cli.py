@@ -92,9 +92,12 @@ question = decode(MODEL="medium")
 print(question)
 notify_send("ChatGPT Processing")
 logger.debug("Start query to chatGPT")
-cmd = f'echo "{question}" | chatgpt'
-result = subprocess.check_output(cmd, shell=True)
-answer = result.decode('utf8')
+cmd = f'export OPENAI_KEY=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 && echo "{question}" | chatgpt'
+try:
+    result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+except subprocess.CalledProcessError as e:
+    logger.debug(e)
+answer = result.communicate()[0].decode('utf8')
 logger.debug("GPT is got answer")
 write_file_result(answer)
 answer_window(answer)
