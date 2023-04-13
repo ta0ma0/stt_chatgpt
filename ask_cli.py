@@ -30,7 +30,6 @@ audio_f = pyaudio.PyAudio()
 stream = audio_f.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True,
                       frames_per_buffer=CHUNK)
 
-
 def listen_write(RECORD_SECONDS):
     """
     Write you voice query in file
@@ -92,7 +91,7 @@ question = decode(MODEL="medium")
 print(question)
 notify_send("ChatGPT Processing")
 logger.debug("Start query to chatGPT")
-cmd = f'export OPENAI_KEY={OPENAI_KEY} echo "{question}" | chatgpt'
+cmd = f'export OPENAI_KEY={OPENAI_KEY} && echo "{question}" | chatgpt'
 try:
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
 except subprocess.CalledProcessError as e:
