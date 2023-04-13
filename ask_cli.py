@@ -6,7 +6,7 @@ from answer_window import answer_window, auto_close_window
 import time
 import logging
 import os
-
+from config import OPENAI_KEY
 script_path = (os.path.dirname(os.path.realpath(__file__)))
 
 
@@ -92,7 +92,7 @@ question = decode(MODEL="medium")
 print(question)
 notify_send("ChatGPT Processing")
 logger.debug("Start query to chatGPT")
-cmd = f'export OPENAI_KEY=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 && echo "{question}" | chatgpt'
+cmd = f'export OPENAI_KEY{OPENAI_KEY}= echo "{question}" | chatgpt'
 try:
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
 except subprocess.CalledProcessError as e:
