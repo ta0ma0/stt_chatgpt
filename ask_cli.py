@@ -92,7 +92,7 @@ question = decode(MODEL="medium")
 print(question)
 notify_send("ChatGPT Processing")
 logger.debug("Start query to chatGPT")
-cmd = f'export OPENAI_KEY{OPENAI_KEY}= echo "{question}" | chatgpt'
+cmd = f'export OPENAI_KEY={OPENAI_KEY} echo "{question}" | chatgpt'
 try:
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
 except subprocess.CalledProcessError as e:
